@@ -262,32 +262,101 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
-
-**Use case: Delete a person**
+#### Use case: add a student
 
 **MSS**
+1. OHS admin requests to add a student and supplies student details
+2. **ResiReg*** adds the student
+3. **ResiReg** shows that the student has been successfully added and shows the details of the student added
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
-    Use case ends.
+Use case ends
 
 **Extensions**
 
-* 2a. The list is empty.
+- 1a. Student details are missing or invalid
+    - **ResiReg** shows an error message
 
-  Use case ends.
+      Use case starts over
 
-* 3a. The given index is invalid.
+#### Use case: allocate a room to a student
 
-    * 3a1. AddressBook shows an error message.
+**MSS**
+1. OHS admin requests to allocate a particular student to a particular room
+1. **ResiReg** adds the room allocation
+1. **ResiReg** shows the the room allocation has been added and shows important details of the room allocation added
 
-      Use case resumes at step 2.
+Use case ends
 
-*{More to be added}*
+**Extensions**
+
+- 1a. Room is already allocated to another student or room does not exist
+    - **ResiReg** shows an error message
+
+      Use case starts over.
+
+#### Use case: delete a room allocation for a student
+
+**MSS**
+1. OHS admin requests to list room allocations
+1. **ResiReg** shows a list of room allocations
+1. OHS admin requests to delete a room allocation
+1. **ResiReg** removes the room allocation. Only the allocation and not the room or student is deleted
+1. **ResiReg** shows that the room allocation has been deleted and shows important details of the deleted room allocation
+
+**Extensions**
+- 1a. The list of room allocations is empty
+
+    Use case ends
+
+- 3a. Room is vacant or room does not exist
+    - **ResiReg** shows an error message
+
+      Use case resumes at step 2
+      
+#### Use case: edit an existing room allocation
+
+**MSS**
+1. OHS admin requests to list room allocations
+1. **ResiReg** shows a list of room allocations
+1. OHS admin requests to edit a specific room allocation from the list and supplies details to update
+1. **ResiReg** updates the room allocation
+1. **ResiReg** shows the room allocation has been updated and the updated details of the room allocation
+
+**Extensions**
+
+- 3a. Details to update to are invalid
+    - **ResiReg** shows an error message
+
+      Use case resumes at step 2
+
+<!-- (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise) -->
+
+<!-- **Use case: Delete a person** -->
+
+<!-- **MSS** -->
+
+<!-- 1.  User requests to list persons -->
+<!-- 2.  AddressBook shows a list of persons -->
+<!-- 3.  User requests to delete a specific person in the list -->
+<!-- 4.  AddressBook deletes the person -->
+
+<!--     Use case ends. -->
+
+<!-- **Extensions** -->
+
+<!-- * 2a. The list is empty. -->
+
+<!--   Use case ends. -->
+
+<!-- * 3a. The given index is invalid. -->
+
+<!--     * 3a1. AddressBook shows an error message. -->
+
+<!--       Use case resumes at step 2. -->
+
+<!-- *{More to be added}* -->
+
+
 
 ### Non-Functional Requirements
 
